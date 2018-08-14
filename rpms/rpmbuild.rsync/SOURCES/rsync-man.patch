@@ -1,0 +1,21 @@
+--- rsync-3.0.9/rsync.1   2011-09-23 18:42:26.000000000 +0200
++++ rsync-3.0.9/rsync.1   2012-09-19 10:40:19.698802861 +0200
+@@ -438,6 +438,7 @@
+  \-o, \-\-owner                 preserve owner (super\-user only)
+  \-g, \-\-group                 preserve group
+      \-\-devices               preserve device files (super\-user only)
++     \-\-copy-devices          copy device contents as regular file
+      \-\-specials              preserve special files
+  \-D                          same as \-\-devices \-\-specials
+  \-t, \-\-times                 preserve modification times
+
+--- rsync-3.0.9/options.c   2012-09-18 13:33:27.085255598 +0200
++++ rsync-3.0.9/options.c   2012-09-19 10:50:00.500816340 +0200
+@@ -432,6 +432,7 @@
+ #ifdef ICONV_OPTION
+   rprintf(F,"     --iconv=CONVERT_SPEC    request charset conversion of filenames\n");
+ #endif
++  rprintf(F,"     --checksum-seed=NUM     set block/file checksum seed (advanced)\n");
+   rprintf(F," -4, --ipv4                  prefer IPv4\n");
+   rprintf(F," -6, --ipv6                  prefer IPv6\n");
+   rprintf(F,"     --version               print version number\n");
